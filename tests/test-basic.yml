@@ -1,0 +1,24 @@
+name: Test basic usage (install latest pipenv)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+      - name: Assert pipenv is installed
+        run: |
+          echo "Checking pipenv is available..."
+          if ! command -v pipenv >/dev/null 2>&1; then
+            echo "FAIL: pipenv command not found"
+            exit 1
+          fi
+          VERSION_OUTPUT="$(pipenv --version 2>&1)"
+          echo "pipenv version: $VERSION_OUTPUT"
+          if ! echo "$VERSION_OUTPUT" | grep -qi "pipenv"; then
+            echo "FAIL: unexpected pipenv version output: $VERSION_OUTPUT"
+            exit 1
+          fi
+          echo "PASS: pipenv is installed"

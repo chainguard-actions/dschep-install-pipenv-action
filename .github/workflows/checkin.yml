@@ -1,0 +1,22 @@
+name: "PR Checks"
+on: [pull_request, push]
+
+permissions:
+  contents: read
+
+jobs:
+  check_pr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v1
+
+    - name: "npm ci"
+      run: npm ci
+
+    - name: "npm run build"
+      run: npm run build
+
+    - name: "Setup pipenv using this branch's action"
+      uses: "./"
+
+    - run: "pipenv --help"
