@@ -8,7 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v1 | [`v1`](https://github.com/chainguard-actions/dschep-install-pipenv-action/tree/v1) | — |
+| v1 | [`v1`](https://github.com/chainguard-actions/dschep-install-pipenv-action/tree/v1) | [`aaac031`](https://github.com/dschep/install-pipenv-action/commit/aaac0310d5f4a052d150e5f490b44354e08fbb8c) |
 
 ## Privacy
 
